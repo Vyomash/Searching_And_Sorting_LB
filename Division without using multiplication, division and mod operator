@@ -1,0 +1,65 @@
+//{ Driver Code Starts
+//Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+// } Driver Code Ends
+//User function Template for C++
+
+class Solution
+{
+    public:
+    long long solve(long long dividend, long long divisor){
+        long long int s=0;
+        long long int e=dividend;
+        long long int q=divisor;
+        long long int mid=s+(e-s)/2;
+        long long int ans=-1;
+        while(s<=e){
+            if(mid*q==dividend){
+                return mid;
+            }
+            else if(mid*q<dividend){
+                ans=mid;
+                s=mid+1;
+            }
+            else{
+                e=mid-1;
+            }
+            mid=s+(e-s)/2;
+        }
+        return ans;
+    }
+    long long divide(long long dividend, long long divisor) 
+    {
+        //code here
+        long long int ans=solve(abs(dividend),abs(divisor));
+        if((dividend<0 && divisor>0) || (dividend>0 && divisor<0)) {
+            ans=0-ans;
+        }
+        return ans;
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+	int t;
+	cin >> t;
+
+	while (t--)
+	{
+
+		long long a, b;
+		cin >> a >> b;
+		
+		Solution ob;
+		cout << ob.divide(a, b) << "\n";
+	}
+
+	return 0;
+}
+
+// } Driver Code Ends
