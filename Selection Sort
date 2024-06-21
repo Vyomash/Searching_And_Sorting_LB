@@ -1,0 +1,12 @@
+void selection(vector<int> &v){
+    int n=v.size();
+    for(int i=0;i<n-1;i++){
+        int minindex=i;
+        for(int j=i+1;j<n;j++){
+            if(v[j]<v[minindex]){
+                minindex=j;
+            }
+        }
+        swap(v[i],v[minindex]);
+    }
+}
